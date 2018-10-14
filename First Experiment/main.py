@@ -88,15 +88,13 @@ if __name__ == '__main__' :
         img = cv2.imread(image_path)
 
 #-------------------------------------------------------------------
-        #salt_pepper_img = salt_pepper(img , salt_n)
-        #gauss_noise_img = gauss_noise(img , gauss_sigma)
-
+        salt_pepper_img = salt_pepper(img , salt_n)
+        gauss_noise_img = gauss_noise(img , gauss_sigma)
         #cv2.imshow('salt_pepper_image' , salt_pepper_img)
         #cv2.imshow('gauss_noise_img' , gauss_noise_img)
-        #cv2.imshow('d',img)
 ##-------------------------------------------------------------------
-        #med_filter_gauss_img = img_filter(gauss_noise_img , filter_n , MED_FILTER)
-        #med_filter_salt_img = img_filter(salt_pepper_img , 5 , MED_FILTER)
+        med_filter_gauss_img = img_filter(gauss_noise_img , filter_n , MED_FILTER)
+        med_filter_salt_img = img_filter(salt_pepper_img , 5 , MED_FILTER)
 
         #cv2.imshow('med_filter_gauss_img' , med_filter_gauss_img)
         #cv2.imshow('med_filter_salt_img' , med_filter_salt_img)
@@ -108,14 +106,17 @@ if __name__ == '__main__' :
         #cv2.imshow('wiener_filter_salt_img' , wiener_filter_salt_img)
 
 ##--------------------------------------------------------------------
-        #gauss_filter_gauss_img = img_filter(gauss_noise_img , filter_sigma , GAUSS_FILTER)
-        #gauss_filter_salt_img = img_filter(salt_pepper_img , 5 , GAUSS_FILTER)
+        gauss_filter_gauss_img = img_filter(gauss_noise_img , filter_sigma , GAUSS_FILTER)
+        gauss_filter_salt_img = img_filter(salt_pepper_img , 5 , GAUSS_FILTER)
 
+        #cv2.imwrite(".\\images\\gauss_filter_gauss_img.jpg",gauss_filter_gauss_img)
+        #cv2.imwrite(".\\images\\gauss_filter_salt_img.jpg",gauss_filter_salt_img)
         #cv2.imshow('gauss_filter_gauss_img' , gauss_filter_gauss_img)
         #cv2.imshow('gauss_filter_salt_img' , gauss_filter_salt_img)
 #--------------------------------------------------------------------
-        show_gray_hist(img)
-        
+        show_gray_hist(gauss_noise_img)
+        show_gray_hist(gauss_filter_gauss_img)
+         
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
